@@ -8,8 +8,7 @@ const client = new GitHubApiClient(),
 
 (async () => {
   try {
-    const resp = await Promise.all([client.fetchUser(handle), client.fetchRepos(handle)]),
-      user = resp[0], repos = resp[1];
+    const [ user, repos ] = await Promise.all([client.fetchUser(handle), client.fetchRepos(handle)]);
 
     console.log(`User ${user.name} has ${repos.length} repositories.`);
 
